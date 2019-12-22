@@ -1,5 +1,7 @@
 package com;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Driver {
@@ -7,21 +9,22 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        System.out.println("Enter Capacity for cache");
-        int capacity = sc.nextInt();
+        LRUCacheImpl lruCache = new LRUCacheImpl(5);
 
-        LRUCache lruCache = new LRUCache(capacity);
-        System.out.println("\n Cache Created with capacity : " + capacity);
-
-        while(true){
-            System.out.println(" Enter new Element or -1 to exit !!! ");
-            int element = sc.nextInt();
-            if(element == -1){
-                break;
-            } else {
-            lruCache.add(element);
-            lruCache.displayCache();
-            }
+        lruCache.setData("key1", 1);
+        lruCache.setData("key2", 1);
+        lruCache.setData("key3", 1);
+        lruCache.setData("key4", 1);
+        lruCache.setData("key5", 1);
+        lruCache.setData("key6", 1);
+        try {
+            int value =  lruCache.get("key2");
+            System.out.println("value:" + value);
+        } catch (Exception e) {
+            System.out.println("No such key");
+            e.printStackTrace();
         }
+
+
     }
 }
